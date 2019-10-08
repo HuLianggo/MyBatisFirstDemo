@@ -12,6 +12,7 @@ public class DataConnection {
 	private String resource = "SqlMapConfig.xml";
 	private SqlSessionFactory sqlSessionFactory;
 	
+	
 	private SqlSession sqlSession;
 	
 	
@@ -19,7 +20,7 @@ public class DataConnection {
 		InputStream inputStream =org.apache.ibatis.io.Resources.getResourceAsStream(resource);
 		sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 		sqlSession = sqlSessionFactory.openSession();
-			
+			System.out.println();
 		return sqlSession;
 	}
 }
