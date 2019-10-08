@@ -16,6 +16,7 @@ public class MyBatisTest {
 		SqlSession sqlSession = dataConn.getSqlSession();
 		User user = sqlSession.selectOne("test.findUserById", 1);
 		System.out.println("===="+user.getId()+"===="+user.getCity()+"===="+user.getGender()+"====");
+		System.out.println(user.getBirthday());
 		sqlSession.close();
 		
 	}
