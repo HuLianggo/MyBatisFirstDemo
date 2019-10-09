@@ -7,4 +7,53 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findUserById" parameterType="int" resultType="cn.com.mybatis.po.User">
 		SELECT * FROM USER WHERE ID=#{id}
 	</select>
+	
+	<select id="findUserByName" parameterType="java.lang.String" resultType="cn.com.mybatis.po.User">
+		Select * from user where username like '%${value}%' 
+	</select>
+	
+	<select id="findUserByProvince" parameterType="String" resultType="cn.com.mybatis.po.User">
+	Select * from user where province like '%${value}%' 
+	</select>
+	
+	<insert id="insertUser" parameterType="cn.com.mybatis.po.User">
+	insert into User(
+		USERNAME,
+		PASSWORD,
+		GENDER,
+		EMAIL,
+		PROVINCE,
+		CITY,
+		BIRTHDAY
+	)values(
+		#{username},
+		#{password},
+		#{gender},
+		#{email},
+		#{province},
+		#{city},
+		#{birthday}
+	)
+	</insert>
+	
+	
+	<update id="updateUser" parameterType="cn.com.mybatis.po.User">
+	update USER SET 
+		USERNAME = #{username},
+		PASSWORD = #{password},
+		GENDER = #{gender},
+		EMAIL = #{email},
+		PROVINCE = #{province},
+		CITY = #{city},
+		BIRTHDAY = #{birthday}
+		where 
+		ID = #{id}
+	</update>
+	
+	
+	<delete id="deleteByUserName" parameterType="cn.com.mybatis.po.User">
+	DELETE FROM USER WHERE USERNAME = #{username}
+	</delete>
+	
+	
 </mapper>
