@@ -23,6 +23,13 @@ public class MyBatisTest {
 		System.out.println(user.getEmail());
 //		
 		
+		
+		User user22 = sqlSession.selectOne("test.findUserById", 1);
+		System.out.println("===="+user22.getId()+"===="+user22.getCity()+"===="+user22.getGender()+"====");
+		System.out.println(user22.getBirthday());
+		System.out.println(user22.getPassword());
+		System.out.println(user22.getEmail());
+		
 		User user2 = sqlSession.selectOne("test.findUserByName","ŒÂ");
 		System.out.println(user2.getId());
 		System.out.println("-----");
@@ -62,8 +69,8 @@ public class MyBatisTest {
 		
 		User user6 = new User();
 		user6.setUsername("÷Ï÷ÿ∞À");
-		sqlSession.delete("test.deleteByUserName", user6);
-		sqlSession.commit();
+//		sqlSession.delete("test.deleteByUserName", user6);
+//		sqlSession.commit();
 		sqlSession.close();
 		
 		
