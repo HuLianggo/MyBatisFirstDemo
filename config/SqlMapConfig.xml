@@ -8,6 +8,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</properties>
 	<settings>
 		<setting name="logImpl" value="LOG4J"/>
+		<!-- <setting name="cacheEnabled" value="true" /> -->  
 	</settings>
 	
 	
@@ -31,5 +32,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<mappers>
 		<mapper resource="sqlmap/UserMapper.xml"/>
 		<mapper resource="sqlmap/GameMapper.xml"/>
+		<mapper resource="sqlmap/CmsMapper.xml"/>
+		<mapper resource="sqlmap/CustomerMapper.xml"/>
 	</mappers>
 </configuration>
