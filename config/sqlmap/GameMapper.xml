@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="game">
+	<resultMap  id="GamePlayerResult" type="cn.com.mybatis.po.GamePlayer">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="gender" column="gender"/>
+		<result property="level" column="level"/>
+		<result property="ptype" column="ptype"/>
+		
+		<association property="p_type" javaType="java.util.HashMap">
+			<discriminator javaType="String" column="p_type">
+			<case value="1" resultMap="warriorResult"/>
+			<case value="2" resultMap="magicianResult"/>
+			</discriminator>
+		</association>	
+	</resultMap>
+	
+	<resultMap type="java.util.HashMap" id="warriorResult">
+		<result property="svalue" column="svalue"/>
+		<result property="power" column="power"/>
+	</resultMap>
+	
+	<select id="queryWarriorGamePlayer" parameterType="int" resultMap="GamePlayerResult">
+		select gp.id,gp.name,gp.gender,gp.level,gp.ptype,gp.p_type,w.svalue,w.power from gameplayer gp left join warrior_inf w on gp.level= w.level where id=#{id}	</select>	
+		
+		
+</mapper>

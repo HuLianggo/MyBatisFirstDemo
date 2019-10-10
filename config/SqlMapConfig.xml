@@ -9,6 +9,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<settings>
 		<setting name="logImpl" value="LOG4J"/>
 	</settings>
+	
+	
+	<objectFactory type="cn.com.mybatis.test.CartObjectFactory"></objectFactory>
 	<environments default="development">
 		<environment id="development">
 			<!--使用jdbc事务管理 -->
@@ -27,5 +30,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<!-- 引入映射配置文件 -->
 	<mappers>
 		<mapper resource="sqlmap/UserMapper.xml"/>
+		<mapper resource="sqlmap/GameMapper.xml"/>
 	</mappers>
 </configuration>

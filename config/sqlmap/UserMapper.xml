@@ -2,8 +2,30 @@
 <!DOCTYPE mapper 
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="test">
+	<resultMap id="shoppingResult" type="cn.com.mybatis.po.ShoppingCart" >
+		<id property="scart_id" column="scart_id"/>
+		<result property="p_name" column="p_name"/>
+		<association property="user" javaType="cn.com.mybatis.po.User">
+		<id property="id" column="user_id"/>
+		<result property="username" column="user_name"/>
+		<result property="gender" column="gender"/>
+		<result property="email" column="email"/>
+		</association>
+	</resultMap>
+	<select id="queryShoppingCart" resultMap="shoppingResult" >
+	select s.scart_id as scart_id,
+		s.p_name as p_name,
+		u.ID as ID,
+		u.username as username,
+		 u.gender as gender, 
+		 u.EMAIL as EMAIL
+		from shopping_cart s inner join user u on s.scart_id=u.id 
+		and u.username = #{username}
+	</select>		
+
+
+
 	<select id="findUserById" parameterType="int" resultType="cn.com.mybatis.po.User">
 		SELECT * FROM USER WHERE ID=#{id}
 	</select>
